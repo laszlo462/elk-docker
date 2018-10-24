@@ -8,7 +8,7 @@
 # docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk <repo-user>/elk
 
 FROM phusion/baseimage
-MAINTAINER Sebastien Pujadas http://pujadas.net
+MAINTAINER Steve Szabo https://github.com/laszlo462
 ENV REFRESHED_AT 2017-02-28
 
 
@@ -162,6 +162,10 @@ RUN chmod 644 /etc/logrotate.d/elasticsearch \
 
 ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
 
+### install plugins
+
+RUN /opt/elasticsearch/bin/elasticsearch-plugin install ingest-user-agent --batch
+RUN /opt/elasticsearch/bin/elasticsearch-plugin install ingest-geoip --batch
 
 ###############################################################################
 #                                   START
