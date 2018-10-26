@@ -1,4 +1,5 @@
 # Docker Compose file for ELK stack
+# Customized for laszlo462's Rancher environment
 
 # Build with:
 # docker-compose build elk
@@ -6,9 +7,17 @@
 # Run with:
 # docker-compose up
 
-elk:
-  build: .
-  ports:
-    - "5601:5601"
-    - "9200:9200"
-    - "5044:5044"
+version: '2'
+volumes:
+  elkprod:
+    driver: rancher-nfs
+services:
+  elkprod:
+    image: laszlo462/elk-docker
+    volumes:
+    - elkprod:/var/lib/elasticsearch
+    ports:
+    - 5601:5601/tcp
+    - 9200:9200/tcp
+    - 5044:5044/tcp
+    - 5014:5014/tcp

@@ -139,6 +139,7 @@ ADD ./02-beats-input.conf ${LOGSTASH_PATH_CONF}/conf.d/02-beats-input.conf
 ADD ./10-syslog.conf ${LOGSTASH_PATH_CONF}/conf.d/10-syslog.conf
 ADD ./11-nginx.conf ${LOGSTASH_PATH_CONF}/conf.d/11-nginx.conf
 ADD ./30-output.conf ${LOGSTASH_PATH_CONF}/conf.d/30-output.conf
+ADD ./03-opnsense.conf ${LOGSTASH_PATH_CONF}/conf.d/03-opnsense.conf
 
 # patterns
 ADD ./nginx.pattern ${LOGSTASH_HOME}/patterns/nginx
@@ -166,6 +167,7 @@ ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
 
 RUN /opt/elasticsearch/bin/elasticsearch-plugin install ingest-user-agent --batch
 RUN /opt/elasticsearch/bin/elasticsearch-plugin install ingest-geoip --batch
+RUN /opt/logstash/bin/logstash-plugin install logstash-filter-opnsensefilter
 
 ###############################################################################
 #                                   START
@@ -174,7 +176,7 @@ RUN /opt/elasticsearch/bin/elasticsearch-plugin install ingest-geoip --batch
 ADD ./start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-EXPOSE 5601 9200 9300 5044
+EXPOSE 5601 9200 9300 5044 5014
 VOLUME /var/lib/elasticsearch
 
 CMD [ "/usr/local/bin/start.sh" ]
