@@ -135,8 +135,6 @@ ADD ./5_filter_network-firewall_opnsense.conf ${LOGSTASH_PATH_CONF}/conf.d/5_fil
 #ADD ./6_filter_global.conf ${LOGSTASH_PATH_CONF}/conf.d/6_filter_global.conf
 #ADD ./6_filter_public_global.conf ${LOGSTASH_PATH_CONF}/conf.d/6_filter_public_global.conf
 #ADD ./8_filter_ensure_deterministic_output.conf ${LOGSTASH_PATH_CONF}/conf.d/8_filter_ensure_deterministic_output.conf
-ADD ./9_output_all.conf ${LOGSTASH_PATH_CONF}/conf.d/9_output_all.conf
-ADD ./includes/ ${LOGSTASH_PATH_CONF}/includes/
 #ADD ./10-syslog.conf ${LOGSTASH_PATH_CONF}/conf.d/10-syslog.conf
 #ADD ./11-nginx.conf ${LOGSTASH_PATH_CONF}/conf.d/11-nginx.conf
 #ADD ./30-output.conf ${LOGSTASH_PATH_CONF}/conf.d/30-output.conf
