@@ -1,12 +1,6 @@
 # Dockerfile for ELK stack
 # Elasticsearch, Logstash, Kibana 6.4.2
 
-# Build with:
-# docker build -t <repo-user>/elk .
-
-# Run with:
-# docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk <repo-user>/elk
-
 FROM phusion/baseimage
 MAINTAINER Steve Szabo https://github.com/laszlo462
 ENV REFRESHED_AT 2017-02-28
@@ -136,10 +130,15 @@ ADD pipelines.yml ${LOGSTASH_PATH_SETTINGS}/pipelines.yml
 
 # filters
 ADD ./02-beats-input.conf ${LOGSTASH_PATH_CONF}/conf.d/02-beats-input.conf
-ADD ./10-syslog.conf ${LOGSTASH_PATH_CONF}/conf.d/10-syslog.conf
-ADD ./11-nginx.conf ${LOGSTASH_PATH_CONF}/conf.d/11-nginx.conf
-ADD ./30-output.conf ${LOGSTASH_PATH_CONF}/conf.d/30-output.conf
-ADD ./03-opnsense.conf ${LOGSTASH_PATH_CONF}/conf.d/03-opnsense.conf
+ADD ./4_filter_public_global.conf ${LOGSTASH_PATH_CONF}/conf.d/4_filter_public_global.conf
+ADD ./5_filter_network-firewall_opnsense.conf ${LOGSTASH_PATH_CONF}/conf.d/5_filter_network-firewall_opnsense.conf
+ADD ./6_filter_global.conf ${LOGSTASH_PATH_CONF}/conf.d/6_filter_global.conf
+ADD ./6_filter_public_global.conf ${LOGSTASH_PATH_CONF}/conf.d/6_filter_public_global.conf
+ADD ./8_filter_ensure_deterministic_output.conf ${LOGSTASH_PATH_CONF}/conf.d/8_filter_ensure_deterministic_output.conf
+ADD ./9_output_all.conf ${LOGSTASH_PATH_CONF}/conf.d/9_output_all.conf
+#ADD ./10-syslog.conf ${LOGSTASH_PATH_CONF}/conf.d/10-syslog.conf
+#ADD ./11-nginx.conf ${LOGSTASH_PATH_CONF}/conf.d/11-nginx.conf
+#ADD ./30-output.conf ${LOGSTASH_PATH_CONF}/conf.d/30-output.conf
 
 # patterns
 ADD ./nginx.pattern ${LOGSTASH_HOME}/patterns/nginx
