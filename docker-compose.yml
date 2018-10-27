@@ -1,24 +1,20 @@
 # Docker Compose file for ELK stack
 # Customized for laszlo462's Rancher environment
 
-# Build with:
-# docker-compose build elk
-
-# Run with:
-# docker-compose up
-
 version: '2'
 volumes:
-  elkprod:
+  elktest:
     driver: rancher-nfs
 services:
-  elkprod:
-    image: laszlo462/elk-docker
+  elktest:
+    image: laszlo462/elk-docker:opnsense-dev
     volumes:
-    - elkprod:/var/lib/elasticsearch
+    - elktest:/var/lib/elasticsearch
     ports:
     - 5601:5601/tcp
     - 9200:9200/tcp
     - 5044:5044/tcp
     - 5014:5014/udp
     - 5014:5014/tcp
+    labels:
+      io.rancher.container.pull_image: always
