@@ -129,12 +129,8 @@ ADD ./logstash-beats.key /etc/pki/tls/private/logstash-beats.key
 ADD pipelines.yml ${LOGSTASH_PATH_SETTINGS}/pipelines.yml
 
 # filters
+# Commenting out the configs I do not currently use
 #ADD ./02-beats-input.conf ${LOGSTASH_PATH_CONF}/conf.d/02-beats-input.conf
-#ADD ./4_filter_public_global.conf ${LOGSTASH_PATH_CONF}/conf.d/4_filter_public_global.conf
-#ADD ./5_filter_network-firewall_opnsense.conf ${LOGSTASH_PATH_CONF}/conf.d/5_filter_network-firewall_opnsense.conf
-#ADD ./6_filter_global.conf ${LOGSTASH_PATH_CONF}/conf.d/6_filter_global.conf
-#ADD ./6_filter_public_global.conf ${LOGSTASH_PATH_CONF}/conf.d/6_filter_public_global.conf
-#ADD ./8_filter_ensure_deterministic_output.conf ${LOGSTASH_PATH_CONF}/conf.d/8_filter_ensure_deterministic_output.conf
 #ADD ./10-syslog.conf ${LOGSTASH_PATH_CONF}/conf.d/10-syslog.conf
 #ADD ./11-nginx.conf ${LOGSTASH_PATH_CONF}/conf.d/11-nginx.conf
 #ADD ./30-output.conf ${LOGSTASH_PATH_CONF}/conf.d/30-output.conf
