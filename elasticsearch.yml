@@ -44,7 +44,7 @@ path.repo: /var/backups
 #
 # Lock the memory on startup:
 #
-#bootstrap.memory_lock: true
+bootstrap.memory_lock: true
 #
 # Make sure that the heap size is set to about half the memory available
 # on the system and that the owner of the process is allowed to use this
@@ -52,6 +52,7 @@ path.repo: /var/backups
 #
 # Elasticsearch performs poorly when the system is swapping the memory.
 #
+indices.fielddata.cache.size: 20%
 # ---------------------------------- Network -----------------------------------
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):

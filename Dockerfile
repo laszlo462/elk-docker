@@ -44,6 +44,7 @@ ENV ES_GID 991
 ENV ES_UID 991
 ENV ES_PATH_CONF /etc/elasticsearch
 ENV ES_PATH_BACKUP /var/backups
+ENV ES_HEAP_SIZE 2g
 
 RUN mkdir ${ES_HOME} \
  && curl -O https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
